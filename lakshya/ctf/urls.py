@@ -4,8 +4,15 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('sign', views.signup, name='signup'),
-    path('login', views.login, name='login1'),
-    path('ctf/first.html', views.first, name='first'),
-    path('logout',views.logout,name='logout')
+    path('404', views.error, name='error'),
+    path('register', views.signup, name='signup'),
+    path('about', views.about, name='about'),
+    path('login', views.login1, name='login1'),
+    path('instructions', views.inst, name='inst'),
+    path('QUEST', views.first, name='first'),
+    path('logout', views.logout, name='logout'),
+    path('check', views.check, name='c'),
+    path('hint', views.hint, name='h'),
+
+    path('leaderboard', views.leaderboard, name='leaderboard')
 ]

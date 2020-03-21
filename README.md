@@ -6,22 +6,24 @@
 
 
 1. Qpage
+
 - [x] submitting response
 - [x] score updation
 - [x] storing difficulty level
-- [ ] hint logic
-     * [ ] score updation 
-- [ ] solved tag 
-- chart
-- colour models
-- timer
+- [  ] hint logic
+     * [  ] score updation 
+- [  ] solved tag 
+- [x] chart
+- [x] colour models
+- [x] timer
 
 
 2. leaderboard
 - [x] username, time, score printing
-- [ ] graph
+- [x] graph ...
+- [x] submit time, pass time,
 - [x] sorting according to score
-- [ ] sorting acc to time
+- [x] sorting acc to time
 
 3. [ ] logout button
 

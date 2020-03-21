@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,9 +55,7 @@
                     <h1 class="display-1 bold color_white content__title">QUESTS<span class="vim-caret">&nbsp;</span></h1>
                     <p class="text-grey text-spacey hackerFont lead mb-5">
                         Its time to show the world what you can do!
-                        {% for message in messages %}
-       		            <h3>{{message}}</h3>
-   		                {% endfor %}
+
                     </p>
                 </div>
             </div>
@@ -65,23 +64,18 @@
                 <div class="col-md-6 mb-3">
                     <div class="card {{ question.category }}">
 
-                        {% if question.Qid in submission_q_id %}
-                            {%for sub in submission %}
-                                {% if question.Qid == sub.question_id and sub.solved == 1 %}
-                                    <div class="card-header solved " data-target="#problem_id_{{ question.Qid }}" data-toggle="collapse" aria-expanded="false" aria-controls="problem_id_{{ question.Qid }}">
-                                       {{ question.Qtitle }}  <span class="badge">solved</span> <span class="badge">{{ question.points }} points</span>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-                        {% else %}
+                        
+                        {#% if question.Qid in submission %#}
+
                              <div class="card-header " data-target="#problem_id_{{ question.Qid }}" data-toggle="collapse" aria-expanded="false" aria-controls="problem_id_{{ question.Qid }}">
-                               {{ question.Qtitle }} <span class="badge">{{ question.points }} points</span>
+                             {{ question.Qtitle }} <span class="badge">{{ question.points }} points</span>
                             </div>
-                        {%endif%}
+                        {#%endif%#}
+
                         <div id="problem_id_{{ question.Qid }}" class="collapse card-body">
                             <blockquote class="card-blockquote">
                                 <div style="display: flex;">
-                                    <h6 class="solvers">Solvers:{{ question.solved }} &nbsp;<span class="color_danger">Difficulty:</span></h6>
+                                    <h6 class="solvers">Solvers:{{ question.solved_by }} &nbsp;<span class="color_danger">Difficulty:</span> </h6>
                                     <div class="pl-2"><canvas style="width:80px;height:15px" id="problem_id_{{ question.Qid }}_chart"></canvas></div>
                                 </div>
                                 <p>{{ question.Qdes }}</p>
@@ -388,7 +382,7 @@
 <!--                        </a>-->
 <!--                    </div>-->
 <!--                </div>-->
-<!--            </div>-->
+            </div>
             <div class="row hackerFont justify-content-center mt-5">
                 <div class="col-md-12">
                     Chart Difficulties:
@@ -413,15 +407,15 @@
                     </div>
                 </div>
             </div>
+
         </div>
         <script>
-            var dataset = [
-                [41, 42, 43, 0], // keep the zero here
-                [10, 9, 8, 0],
-                [21, 16, 23,  0],
-                [71, 12, 13,  0],
-                [31, 5, 23,  0],
-                [11, 2, 13,  0],
+
+
+       var dataset = [
+       {% for question in questions %}
+                [ {{ question.Easy }}, {{ question.Med }}, {{ question.Hard }}, 0],
+           {% endfor %}
             ]
 
             function getBarChartData(i) {
